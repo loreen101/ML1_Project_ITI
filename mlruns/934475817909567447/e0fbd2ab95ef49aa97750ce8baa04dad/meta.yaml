@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/934475817909567447/e0fbd2ab95ef49aa97750ce8baa04dad/artifacts
+end_time: 1771972176296
+entry_point_name: ''
+experiment_id: '934475817909567447'
+lifecycle_stage: active
+run_id: e0fbd2ab95ef49aa97750ce8baa04dad
+run_name: Hand Gesture SVC v2
+run_uuid: e0fbd2ab95ef49aa97750ce8baa04dad
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1771972168019
+status: 3
+tags: []
+user_id: Loreen

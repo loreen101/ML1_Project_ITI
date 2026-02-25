@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/934475817909567447/4bea362b8365451caa1c0926f782a387/artifacts
+end_time: 1771973545340
+entry_point_name: ''
+experiment_id: '934475817909567447'
+lifecycle_stage: active
+run_id: 4bea362b8365451caa1c0926f782a387
+run_name: Hand Gesture Gradient Boosting v1
+run_uuid: 4bea362b8365451caa1c0926f782a387
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1771973534599
+status: 3
+tags: []
+user_id: Loreen

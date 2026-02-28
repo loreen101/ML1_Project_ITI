@@ -71,7 +71,7 @@ Below is a tabular summary of the validation metrics obtained for each classifie
 A visual comparison can also be found in the grouped‑bar chart saved in the project
 `models_artifacts` directory:
 
-![Model comparison chart](./models_artifacts/models_diff_chart.png)
+![Model comparison chart](./screenshots/models_diff_chart.png)
 
 ### Model Selection
 

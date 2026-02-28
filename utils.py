@@ -1,6 +1,9 @@
+import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import LabelEncoder
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
+
 
 
 def plot_hand_gesture(X_train, y_train, idx):
@@ -56,6 +59,31 @@ def plot_hand_gesture(X_train, y_train, idx):
     ax.set_aspect('equal')
     ax.invert_yaxis()
     plt.show()
+
+def draw_hand_landmarks(frame, hand_landmarks):
+
+    h, w, _ = frame.shape
+    points = []
+
+    HAND_CONNECTIONS = [
+        (0,1),(1,2),(2,3),(3,4),
+        (0,5),(5,6),(6,7),(7,8),
+        (5,9),(9,10),(10,11),(11,12),
+        (9,13),(13,14),(14,15),(15,16),
+        (13,17),(17,18),(18,19),(19,20),
+        (0,17)
+    ]
+    
+    for lm in hand_landmarks:
+        x = int(lm.x * w)
+        y = int(lm.y * h)
+        points.append((x,y))
+        cv2.circle(frame, (x,y), 4, (0,255,0), -1)
+
+    for connection in HAND_CONNECTIONS:
+        start = points[connection[0]]
+        end = points[connection[1]]
+        cv2.line(frame, start, end, (255,0,0), 2)
 
 
 def plot_random_hand_gestures(X_train, y_train, num_samples=5):
@@ -120,3 +148,39 @@ def encode_labels(y):
     label_encoder = LabelEncoder()
     encoded_labels = label_encoder.fit_transform(y)
     return encoded_labels, label_encoder
+
+
+def training_results(train_dataset, val_dataset, y_encoded_train, y_encoded_val, model):
+    y_pred_train = model.predict(train_dataset)
+    y_pred_val = model.predict(val_dataset)
+
+    val_acc = accuracy_score(y_encoded_val, y_pred_val)
+    val_prec = precision_score(y_encoded_val, y_pred_val, average='weighted')
+    val_rec = recall_score(y_encoded_val, y_pred_val, average='weighted')
+    val_f1 = f1_score(y_encoded_val, y_pred_val, average='weighted')
+
+    print("Train Set:")
+    print(f"  Accuracy:  {accuracy_score(y_encoded_train, y_pred_train):.4f}")
+    print(f"  Precision: {precision_score(y_encoded_train, y_pred_train, average='weighted'):.4f}")
+    print(f"  Recall:    {recall_score(y_encoded_train, y_pred_train, average='weighted'):.4f}")
+    print(f"  F1 Score:  {f1_score(y_encoded_train, y_pred_train, average='weighted'):.4f}")
+
+    print("\nValidation Set:")
+    print(f"  Accuracy:  {val_acc:.4f}")
+    print(f"  Precision: {val_prec:.4f}")
+    print(f"  Recall:    {val_rec:.4f}")
+    print(f"  F1 Score:  {val_f1:.4f}")
+
+    return np.array(y_pred_val), val_acc, val_prec, val_rec, val_f1
+
+
+def landmarks_to_model_input(hand_landmarks):
+
+    coords = []
+
+    for lm in hand_landmarks:
+        coords.extend([lm.x, lm.y, lm.z])
+
+    coords = np.array(coords).reshape(1, -1)  # (1,63)
+
+    return preprocess_data(coords)  # -> (1,42)

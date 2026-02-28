@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/934475817909567447/7c4c21ad1fbe4b72a4ae62bba5a4fcc5/artifacts
+end_time: 1772281943720
+entry_point_name: ''
+experiment_id: '934475817909567447'
+lifecycle_stage: active
+run_id: 7c4c21ad1fbe4b72a4ae62bba5a4fcc5
+run_name: Random Forest estimators-120
+run_uuid: 7c4c21ad1fbe4b72a4ae62bba5a4fcc5
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1772281932276
+status: 3
+tags: []
+user_id: Loreen

@@ -4,7 +4,7 @@ entry_point_name: ''
 experiment_id: '934475817909567447'
 lifecycle_stage: active
 run_id: 4bea362b8365451caa1c0926f782a387
-run_name: Hand Gesture Gradient Boosting v1
+run_name: Gradient Boosting v1
 run_uuid: 4bea362b8365451caa1c0926f782a387
 source_name: ''
 source_type: 4

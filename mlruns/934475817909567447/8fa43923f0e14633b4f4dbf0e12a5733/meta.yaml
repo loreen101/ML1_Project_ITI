@@ -4,7 +4,7 @@ entry_point_name: ''
 experiment_id: '934475817909567447'
 lifecycle_stage: active
 run_id: 8fa43923f0e14633b4f4dbf0e12a5733
-run_name: Hand Gesture KNN v1
+run_name: KNN v1
 run_uuid: 8fa43923f0e14633b4f4dbf0e12a5733
 source_name: ''
 source_type: 4

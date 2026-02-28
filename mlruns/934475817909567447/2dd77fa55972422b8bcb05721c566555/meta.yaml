@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/934475817909567447/2dd77fa55972422b8bcb05721c566555/artifacts
+deleted_time: 1772281160462
+end_time: 1772281038072
+entry_point_name: ''
+experiment_id: '934475817909567447'
+lifecycle_stage: deleted
+run_id: 2dd77fa55972422b8bcb05721c566555
+run_name: Hand Gesture Random Forest estimators-110
+run_uuid: 2dd77fa55972422b8bcb05721c566555
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1772281037797
+status: 4
+tags: []
+user_id: Loreen

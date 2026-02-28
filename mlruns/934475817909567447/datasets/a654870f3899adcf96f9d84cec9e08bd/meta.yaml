@@ -1,0 +1,33 @@
+digest: d3873554
+name: dataset
+profile: '{"num_rows": 22343, "num_elements": 960749}'
+schema: '{"mlflow_colspec": [{"type": "double", "name": 0, "required": false}, {"type":
+  "double", "name": 1, "required": false}, {"type": "double", "name": 2, "required":
+  false}, {"type": "double", "name": 3, "required": false}, {"type": "double", "name":
+  4, "required": false}, {"type": "double", "name": 5, "required": false}, {"type":
+  "double", "name": 6, "required": false}, {"type": "double", "name": 7, "required":
+  false}, {"type": "double", "name": 8, "required": false}, {"type": "double", "name":
+  9, "required": false}, {"type": "double", "name": 10, "required": false}, {"type":
+  "double", "name": 11, "required": false}, {"type": "double", "name": 12, "required":
+  false}, {"type": "double", "name": 13, "required": false}, {"type": "double", "name":
+  14, "required": false}, {"type": "double", "name": 15, "required": false}, {"type":
+  "double", "name": 16, "required": false}, {"type": "double", "name": 17, "required":
+  false}, {"type": "double", "name": 18, "required": false}, {"type": "double", "name":
+  19, "required": false}, {"type": "double", "name": 20, "required": false}, {"type":
+  "double", "name": 21, "required": false}, {"type": "double", "name": 22, "required":
+  false}, {"type": "double", "name": 23, "required": false}, {"type": "double", "name":
+  24, "required": false}, {"type": "double", "name": 25, "required": false}, {"type":
+  "double", "name": 26, "required": false}, {"type": "double", "name": 27, "required":
+  false}, {"type": "double", "name": 28, "required": false}, {"type": "double", "name":
+  29, "required": false}, {"type": "double", "name": 30, "required": false}, {"type":
+  "double", "name": 31, "required": false}, {"type": "double", "name": 32, "required":
+  false}, {"type": "double", "name": 33, "required": false}, {"type": "double", "name":
+  34, "required": false}, {"type": "double", "name": 35, "required": false}, {"type":
+  "double", "name": 36, "required": false}, {"type": "double", "name": 37, "required":
+  false}, {"type": "double", "name": 38, "required": false}, {"type": "double", "name":
+  39, "required": false}, {"type": "double", "name": 40, "required": false}, {"type":
+  "double", "name": 41, "required": false}, {"type": "string", "name": "label", "required":
+  false}]}'
+source: '{"tags": {"mlflow.user": "Loreen", "mlflow.source.name": "c:\\Users\\Loreen\\Desktop\\9Month_AI\\ML1_Project\\.venv\\Lib\\site-packages\\ipykernel_launcher.py",
+  "mlflow.source.type": "LOCAL"}}'
+source_type: code

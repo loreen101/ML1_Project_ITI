@@ -1,10 +1,11 @@
 artifact_uri: mlflow-artifacts:/934475817909567447/a1f7a55c68be4718a96766026b1be701/artifacts
+deleted_time: 1772282547380
 end_time: 1771972006869
 entry_point_name: ''
 experiment_id: '934475817909567447'
-lifecycle_stage: active
+lifecycle_stage: deleted
 run_id: a1f7a55c68be4718a96766026b1be701
-run_name: Hand Gesture SVC v1
+run_name: SVC v1
 run_uuid: a1f7a55c68be4718a96766026b1be701
 source_name: ''
 source_type: 4

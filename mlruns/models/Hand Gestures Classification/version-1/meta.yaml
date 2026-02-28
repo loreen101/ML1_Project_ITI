@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1772283819760
+current_stage: None
+description: ''
+last_updated_timestamp: 1772283819760
+name: Hand Gestures Classification
+run_id: b122a0228bd745f1a4dca46eb941f676
+run_link: ''
+source: mlflow-artifacts:/934475817909567447/b122a0228bd745f1a4dca46eb941f676/artifacts/model
+status: READY
+status_message: null
+storage_location: mlflow-artifacts:/934475817909567447/b122a0228bd745f1a4dca46eb941f676/artifacts/model
+user_id: null
+version: 1

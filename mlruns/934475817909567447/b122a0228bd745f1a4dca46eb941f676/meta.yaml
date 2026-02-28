@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/934475817909567447/b122a0228bd745f1a4dca46eb941f676/artifacts
+end_time: 1772282219617
+entry_point_name: ''
+experiment_id: '934475817909567447'
+lifecycle_stage: active
+run_id: b122a0228bd745f1a4dca46eb941f676
+run_name: SVC kernel-rbf C-50
+run_uuid: b122a0228bd745f1a4dca46eb941f676
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1772282206195
+status: 3
+tags: []
+user_id: Loreen

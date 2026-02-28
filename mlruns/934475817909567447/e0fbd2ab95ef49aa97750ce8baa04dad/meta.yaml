@@ -4,7 +4,7 @@ entry_point_name: ''
 experiment_id: '934475817909567447'
 lifecycle_stage: active
 run_id: e0fbd2ab95ef49aa97750ce8baa04dad
-run_name: Hand Gesture SVC v2
+run_name: SVC v1
 run_uuid: e0fbd2ab95ef49aa97750ce8baa04dad
 source_name: ''
 source_type: 4

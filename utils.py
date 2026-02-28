@@ -1,7 +1,10 @@
+import cv2
 import numpy as np
+import pandas as pd
 import mlflow
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import LabelEncoder
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
 
 
 def plot_hand_gesture(X_train, y_train, idx):
@@ -74,6 +77,31 @@ def plot_random_hand_gestures(X_train, y_train, num_samples=5):
     for idx in random_indices:
         plot_hand_gesture(X_train, y_train, idx)
 
+def draw_hand_landmarks(frame, hand_landmarks):
+
+    h, w, _ = frame.shape
+    points = []
+
+    HAND_CONNECTIONS = [
+        (0,1),(1,2),(2,3),(3,4),
+        (0,5),(5,6),(6,7),(7,8),
+        (5,9),(9,10),(10,11),(11,12),
+        (9,13),(13,14),(14,15),(15,16),
+        (13,17),(17,18),(18,19),(19,20),
+        (0,17)
+    ]
+    
+    for lm in hand_landmarks:
+        x = int(lm.x * w)
+        y = int(lm.y * h)
+        points.append((x,y))
+        cv2.circle(frame, (x,y), 4, (0,255,0), -1)
+
+    for connection in HAND_CONNECTIONS:
+        start = points[connection[0]]
+        end = points[connection[1]]
+        cv2.line(frame, start, end, (255,0,0), 2)
+
 
 def preprocess_data(X, wrist_idx=0, mid_finger_tip_idx=12):
     """
@@ -122,14 +150,20 @@ def encode_labels(y):
     encoded_labels = label_encoder.fit_transform(y)
     return encoded_labels, label_encoder
 
+from mlflow.models.signature import infer_signature
 
-def log_model_to_mlflow(model, run_name, tags=None, param_list=None, metrics_list=None):
+
+
+
+def log_model_to_mlflow(model, run_name, train_data, train_label, tags=None, param_list=None, metrics_list=None):
     """
     Log a trained model to MLflow with specified run name, tags, parameters, and metrics.
     
     Parameters:
     - model: the trained model object (e.g., sklearn model, keras model, etc.)
     - run_name: name for the MLflow run (string)
+    - train_data: training data used for the model (numpy array or pandas DataFrame)
+    - train_label: training labels used for the model (numpy array or pandas Series)
     - tags: dictionary of tags to log (e.g., {'model_type': 'svm', 'version': '1.0'})
     - param_list: dictionary of parameters to log (e.g., {'C': 1.0, 'kernel': 'rbf'})
     - metrics_list: dictionary of metrics to log (e.g., {'accuracy': 0.95, 'f1_score': 0.92})
@@ -153,11 +187,53 @@ def log_model_to_mlflow(model, run_name, tags=None, param_list=None, metrics_lis
         if metrics_list:
             for metric_key, metric_value in metrics_list.items():
                 mlflow.log_metric(metric_key, metric_value)
-        
+
+        train_data = pd.DataFrame(train_data)
+        data = pd.concat([train_data, train_label], axis=1)
+        dataset = mlflow.data.from_pandas(data)
+
         # Log the model (sklearn flavor will auto-detect sklearn models)
-        mlflow.sklearn.log_model(model, artifact_path="model")
+        signature = infer_signature(train_data, model.predict(train_data))
+        mlflow.log_input(dataset)
+        mlflow.sklearn.log_model(model, artifact_path="model", signature=signature)
         
         # Get the run ID
         run_id = mlflow.active_run().info.run_id
     
     return run_id
+
+
+def training_results(train_dataset, val_dataset, y_encoded_train, y_encoded_val, model):
+    y_pred_train = model.predict(train_dataset)
+    y_pred_val = model.predict(val_dataset)
+
+    val_acc = accuracy_score(y_encoded_val, y_pred_val)
+    val_prec = precision_score(y_encoded_val, y_pred_val, average='weighted')
+    val_rec = recall_score(y_encoded_val, y_pred_val, average='weighted')
+    val_f1 = f1_score(y_encoded_val, y_pred_val, average='weighted')
+
+    print("Train Set:")
+    print(f"  Accuracy:  {accuracy_score(y_encoded_train, y_pred_train):.4f}")
+    print(f"  Precision: {precision_score(y_encoded_train, y_pred_train, average='weighted'):.4f}")
+    print(f"  Recall:    {recall_score(y_encoded_train, y_pred_train, average='weighted'):.4f}")
+    print(f"  F1 Score:  {f1_score(y_encoded_train, y_pred_train, average='weighted'):.4f}")
+
+    print("\nValidation Set:")
+    print(f"  Accuracy:  {val_acc:.4f}")
+    print(f"  Precision: {val_prec:.4f}")
+    print(f"  Recall:    {val_rec:.4f}")
+    print(f"  F1 Score:  {val_f1:.4f}")
+
+    return np.array(y_pred_val), val_acc, val_prec, val_rec, val_f1
+
+
+def landmarks_to_model_input(hand_landmarks):
+
+    coords = []
+
+    for lm in hand_landmarks:
+        coords.extend([lm.x, lm.y, lm.z])
+
+    coords = np.array(coords).reshape(1, -1)  # (1,63)
+
+    return preprocess_data(coords)  # -> (1,42)

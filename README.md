@@ -80,7 +80,7 @@ achieved similar validation scores, so GB was dropped solely for its long traini
 times. RF was promising because of its low variability; we spent time fine‑tuning its
 hyperparameters, but it never outperformed the untuned SVM.
 
-![Model comparison chart](./models_artifacts/rf_comparison.png)
+![Model comparison chart](./screenshots/rf_comparison.png)
 
 
 After further tuning of SVM's regularization parameter `C` we arrived at the following
@@ -95,12 +95,12 @@ C = 40  → 0.9810
 Based on these results, the best performance was achieved with **C = 50**, so the final
 model used a tuned SVM classifier with that parameter.
 
-![Model comparison chart](./models_artifacts/rf_vs_svc.png)
-![Model comparison chart](./models_artifacts/rf_vs_svc2.png)
+![Model comparison chart](./screenshots/rf_vs_svc.png)
+![Model comparison chart](./screenshots/rf_vs_svc2.png)
 
 This evaluation guided the final choice of model for the project.
 
-![Model comparison chart](./models_artifacts/registered_model.png)
+![Model comparison chart](./screenshots/registered_model.png)
 
 ## Tech Stack
 

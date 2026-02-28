@@ -13,7 +13,7 @@ The project utilizes the **HaGRID (Hand Gesture Recognition Image Dataset)**, a 
 - **Raw Features**: 63 features per sample (21 landmarks × 3 coordinates)
 - **Multiple Gestures**: The dataset includes various hand gesture categories for classification
 
-The project used sample of 9000 rows from the dataset, which was preprocessed and loaded from the `hand_landmarks_data.csv` file, and contains both feature vectors and gesture labels.
+The project used 25675 samples from the dataset, which was preprocessed and loaded from the `hand_landmarks_data.csv` file, and contains both feature vectors and gesture labels.
 
 ## Preprocessing Details
 
